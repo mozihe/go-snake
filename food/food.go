@@ -42,3 +42,11 @@ func NewFood(unable []tool.Point, Size int) *Food {
 	return &Food{x: X, y: Y, ability: myAbility}
 
 }
+
+func (f *Food) GetX() int {
+	return f.x
+}
+
+func (f *Food) GetY() int {
+	return f.y
+}

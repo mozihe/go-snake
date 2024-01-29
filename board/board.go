@@ -53,3 +53,6 @@ func NewBoard() *Board {
 func (b *Board) GetSize() int {
 	return b.Size
 }
+func (b *Board) GetCell() int {
+	return b.cellSize
+}

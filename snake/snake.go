@@ -19,7 +19,7 @@ func NewSnake(Size int) *Snake {
 	oneBody := tool.NewPoint(int(Size/2), int(Size/2)-1)
 	var body []tool.Point
 	body = append([]tool.Point{*oneBody}, body...)
-	return &Snake{Head: *head, Body: body, Speed: 2, Direction: *tool.NewVector(0, 1)}
+	return &Snake{Head: *head, Body: body, Speed: 2, Direction: *tool.NewVector(0, -1)}
 }
 
 func (s *Snake) Update() {

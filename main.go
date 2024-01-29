@@ -6,6 +6,7 @@ import (
 	"Snake-Go/snake"
 	"Snake-Go/tool"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"image/color"
 	"log"
 )
@@ -28,11 +29,19 @@ func newGame() *Game {
 }
 
 func (g *Game) Update() error {
+	ebiten.SetMaxTPS(g.snake.Speed)
+	g.snake.Update()
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	screen.Fill(color.Black)
+	ebitenutil.DrawRect(screen, float64(g.snake.Head.GetX()*g.board.GetCell()), float64(g.snake.Head.GetY()*g.board.GetCell()), float64(g.board.GetCell()), float64(g.board.GetCell()), color.RGBA{255, 0, 0, 255})
+	for _, oneBody := range g.snake.Body {
+		ebitenutil.DrawRect(screen, float64(oneBody.GetX()*g.board.GetCell()), float64(oneBody.GetY()*g.board.GetCell()), float64(g.board.GetCell()), float64(g.board.GetCell()), color.RGBA{255, 0, 0, 255})
+	}
+	ebitenutil.DrawRect(screen, float64(g.food.GetX()*g.board.GetCell()), float64(g.food.GetY()*g.board.GetCell()), float64(g.board.GetCell()), float64(g.board.GetCell()), color.RGBA{0, 0, 255, 255})
+
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
