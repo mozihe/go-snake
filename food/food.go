@@ -50,3 +50,7 @@ func (f *Food) GetX() int {
 func (f *Food) GetY() int {
 	return f.y
 }
+
+func (f *Food) GetAbility() Ability {
+	return f.ability
+}
